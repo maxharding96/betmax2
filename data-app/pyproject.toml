@@ -1,0 +1,7 @@
+[project]
+name = "data-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["peewee[psycopg3]>=3.19.0"]
