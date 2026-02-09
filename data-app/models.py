@@ -9,23 +9,12 @@ from peewee import (
     BooleanField,
     FloatField,
 )
-import enum
+from schemas import League, Season, PredictionField
 
 
 class BaseModel(Model):
     class Meta:
         database = db
-
-
-class League(enum.IntEnum):
-    PREMIER_LEAGUE = 0
-    CHAMPIONSHIP = 1
-
-
-class Season(enum.IntEnum):
-    S_23 = 0
-    S_24 = 1
-    S_25 = 2
 
 
 class Team(BaseModel):
@@ -55,7 +44,7 @@ class Match(BaseModel):
 
 class MatchReport(BaseModel):
     started = BooleanField()
-    match = ForeignKeyField(Team, backref="player_reports")
+    match = ForeignKeyField(Match, backref="player_reports")
     player = ForeignKeyField(Player, backref="match_reports")
     min = SmallIntegerField()
     sh = SmallIntegerField()
@@ -64,13 +53,8 @@ class MatchReport(BaseModel):
     fld = SmallIntegerField()
 
 
-class PredictionField(enum.IntEnum):
-    SH = 0
-    SOT = 1
-
-
 class MatchPrediction(BaseModel):
-    match = ForeignKeyField(Team, backref="player_predictions")
+    match = ForeignKeyField(Match, backref="player_predictions")
     player = ForeignKeyField(Player, backref="match_predictions")
     field = IntegerField(choices=[(s.value, s.name) for s in PredictionField])
     value = FloatField()
