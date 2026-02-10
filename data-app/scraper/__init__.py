@@ -1,1 +1,1 @@
-from main import Scraper
+from .index import Scraper

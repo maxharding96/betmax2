@@ -34,4 +34,11 @@ def get_schedule_ext(league: League, season: Season) -> str:
     if is_current:
         end_ext = season_str + "-" + end_ext
 
-    return f"comps/{league_code}{season_ext}/schedule/{end_ext}"
+    return f"/en/comps/{league_code}{season_ext}/schedule/{end_ext}"
+
+
+def get_schedule_table_id(league: League, season: Season) -> str:
+    league_code = league_to_code[league]
+    season_str = season_to_str[season]
+
+    return f"sched_{season_str}_{league_code}_1"

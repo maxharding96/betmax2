@@ -6,7 +6,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "asyncio>=4.0.0",
+    "lxml>=6.0.2",
     "nodriver>=0.48.1",
+    "pandas>=3.0.0",
     "pydantic>=2.12.5",
     "sqlalchemy>=2.0.46",
     "statsmodels>=0.14.6",
