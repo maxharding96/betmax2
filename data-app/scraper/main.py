@@ -28,13 +28,13 @@ class Scraper:
     async def handle_tasks(self):
         pass
 
-    async def _load_page(self, url: str):
+    async def _get_page_content(self, url: str) -> str:
         print(f"Navigating to: {url}")
         page = await self._browser.get(url)
 
         await self._human_delay(mu=3, sigma=0.8)
 
-        return page
+        return page.get_content()
 
     @staticmethod
     async def _human_delay(mu=4.0, sigma=1.5):
