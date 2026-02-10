@@ -1,16 +1,27 @@
-from peewee import PostgresqlDatabase
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from models import Base
+from contextlib import contextmanager
 
-db = PostgresqlDatabase(
-    "my_local_db",  # Database name
-    user="postgres",  # Default user is usually 'postgres'
-    password="password",  # Your password
-    host="localhost",  # Local machine
-    port=5432,  # Default Postgres port
-)
+engine = create_engine("postgresql://user:pass@localhost/db_name", echo=True)
+
+SessionLocal = sessionmaker(bind=engine)
 
 
-def initialize_db():
-    from models import Team, Player, Match, MatchReport, MatchPrediction
+def init_db():
+    Base.metadata.create_all(bind=engine)
+    print("Database tables created successfully!")
 
-    with db:
-        db.create_tables([Team, Player, Match, MatchReport, MatchPrediction], safe=True)
+
+@contextmanager
+def get_session():
+    """Transactional scope around a series of operations."""
+    session = SessionLocal()
+    try:
+        yield session
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
