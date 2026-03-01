@@ -9,6 +9,7 @@ dependencies = [
     "lxml>=6.0.2",
     "nodriver>=0.48.1",
     "pandas>=3.0.0",
+    "psycopg2>=2.9.11",
     "pydantic>=2.12.5",
     "sqlalchemy>=2.0.46",
     "statsmodels>=0.14.6",

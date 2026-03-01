@@ -18,6 +18,13 @@ class Season(enum.IntEnum):
 class PredictionField(enum.IntEnum):
     SH = 0
     SOT = 1
+    FLS = 2
+    FLD = 3
+
+
+class Venue(enum.IntEnum):
+    HOME = 0
+    AWAY = 1
 
 
 class BaseSchema(BaseModel):

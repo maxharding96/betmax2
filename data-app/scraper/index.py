@@ -24,33 +24,16 @@ class Scraper:
     def stop(self):
         self._browser.stop()
 
-    # TODO: how do we want to handle this?
-    async def handle_tasks(self, url: str):
-        await self._human_delay(mu=3, sigma=0.8)
-
-        content = await self._get_page_content(url)
-        return content
-
     async def get_page(self, url: str) -> uc.Tab:
         print(f"Navigating to: {url}")
         page = await self._browser.get(url)
 
-        await self._delay(6)
+        await self._delay()
 
         return page
 
     @staticmethod
-    async def _human_delay(mu=4.0, sigma=1.5):
-        """
-        Uses a Gaussian (normal) distribution for sleep times.
-        mu: average sleep time.
-        sigma: how much the 'mood' varies.
-        """
-        wait = max(1.8, random.gauss(mu, sigma))
-        print(f"Waiting for {wait:.2f}s...")
-        await asyncio.sleep(wait)
-
-    @staticmethod
-    async def _delay(wait: int):
+    async def _delay():
+        wait = 5 + 5 * random.random()
         print(f"Waiting for {wait:.2f}s...")
         await asyncio.sleep(wait)

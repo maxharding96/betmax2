@@ -3,12 +3,15 @@ from sqlalchemy.orm import sessionmaker
 from models import Base
 from contextlib import contextmanager
 
-engine = create_engine("postgresql://user:pass@localhost/db_name", echo=True)
+DATABASE_URL = "postgresql://myuser:mypassword@localhost:5432/mydb"
+
+engine = create_engine(DATABASE_URL, echo=True)
 
 SessionLocal = sessionmaker(bind=engine)
 
 
 def init_db():
+    Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     print("Database tables created successfully!")
 

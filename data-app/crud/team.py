@@ -1,16 +1,17 @@
-from models import Team, League, Match
+from models import Team
+from schemas import League
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
 
-def create_team(name: str, league: League) -> Team:
-    team = Team.create(name=name, league=league)
+def get_or_create_team(session: Session, team_name: str, league: League) -> Team:
+    """Checks if team exists by name; if not, creates it."""
+    stmt = select(Team).where(Team.name == team_name)
+    team = session.execute(stmt).scalar_one_or_none()
+
+    if not team:
+        team = Team(name=team_name, league=league)
+        session.add(team)
+        session.flush()
+
     return team
-
-
-def get_team_by_name(name: str) -> Match:
-    team = Team.get(Team.name == name)
-    return team
-
-
-team = get_team_by_name("")
-
-team.home_team.id

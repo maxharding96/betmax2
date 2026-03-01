@@ -1,10 +1,19 @@
 from __future__ import annotations
 from datetime import datetime
-from typing import List, Optional
+from typing import List
 
-from sqlalchemy import ForeignKey, String, Float, Boolean, SmallInteger, DateTime, Enum
+from sqlalchemy import (
+    ForeignKey,
+    String,
+    Boolean,
+    SmallInteger,
+    DateTime,
+    Enum,
+    UniqueConstraint,
+)
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from schemas import League, Season, PredictionField
+from schemas import League, Season
+from sqlalchemy.dialects.postgresql import JSONB
 
 
 class Base(DeclarativeBase):
@@ -19,12 +28,16 @@ class Team(Base):
     league: Mapped[League] = mapped_column(Enum(League))
 
     # Relationships
-    players: Mapped[List["Player"]] = relationship(back_populates="team")
     home_matches: Mapped[List["Match"]] = relationship(
-        "Match", foreign_keys="[Match.home_team_id]", back_populates="home_team"
+        "Match", foreign_keys="Match.home_team_id", back_populates="home_team"
     )
     away_matches: Mapped[List["Match"]] = relationship(
-        "Match", foreign_keys="[Match.away_team_id]", back_populates="away_team"
+        "Match", foreign_keys="Match.away_team_id", back_populates="away_team"
+    )
+    player_match_reports: Mapped[List["PlayerMatchReport"]] = relationship(
+        "PlayerMatchReport",
+        foreign_keys="PlayerMatchReport.team_id",
+        back_populates="team",
     )
 
 
@@ -33,12 +46,10 @@ class Player(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String, unique=True)
-    team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
 
     # Relationships
-    team: Mapped["Team"] = relationship(back_populates="players")
-    match_reports: Mapped[List["MatchReport"]] = relationship(back_populates="player")
-    match_predictions: Mapped[List["MatchPrediction"]] = relationship(
+    reports: Mapped[List["PlayerMatchReport"]] = relationship(back_populates="player")
+    probabilities: Mapped[List["PlayerMatchProbabilities"]] = relationship(
         back_populates="player"
     )
 
@@ -47,40 +58,41 @@ class Match(Base):
     __tablename__ = "matches"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    date: Mapped[datetime] = mapped_column(DateTime)
+    season: Mapped[Season] = mapped_column(Enum(Season))
     home_team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
     away_team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
 
-    match_day: Mapped[int] = mapped_column(SmallInteger)
-    date: Mapped[datetime] = mapped_column(DateTime)
-    season: Mapped[Season] = mapped_column(Enum(Season))
-
-    # Coefficients
-    home_attack_coeffs: Mapped[Optional[float]] = mapped_column(Float, default=None)
-    away_attack_coeffs: Mapped[Optional[float]] = mapped_column(Float, default=None)
-    home_defence_coeffs: Mapped[Optional[float]] = mapped_column(Float, default=None)
-    away_defence_coeffs: Mapped[Optional[float]] = mapped_column(Float, default=None)
-
     # Relationships
     home_team: Mapped["Team"] = relationship(
-        "Team", foreign_keys=[home_team_id], back_populates="home_matches"
+        "Team",
+        foreign_keys=[home_team_id],
+        back_populates="home_matches",
     )
     away_team: Mapped["Team"] = relationship(
-        "Team", foreign_keys=[away_team_id], back_populates="away_matches"
+        "Team",
+        foreign_keys=[away_team_id],
+        back_populates="away_matches",
     )
-    player_reports: Mapped[List["MatchReport"]] = relationship(back_populates="match")
-    player_predictions: Mapped[List["MatchPrediction"]] = relationship(
+    player_match_reports: Mapped[List["PlayerMatchReport"]] = relationship(
+        back_populates="match"
+    )
+    player_match_probabilities: Mapped[List["PlayerMatchProbabilities"]] = relationship(
         back_populates="match"
     )
 
+    __table_args__ = (UniqueConstraint("season", "home_team_id", "away_team_id"),)
 
-class MatchReport(Base):
-    __tablename__ = "match_reports"
+
+class PlayerMatchReport(Base):
+    __tablename__ = "player_match_reports"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    started: Mapped[bool] = mapped_column(Boolean)
-    match_id: Mapped[int] = mapped_column(ForeignKey("matches.id"))
     player_id: Mapped[int] = mapped_column(ForeignKey("players.id"))
+    match_id: Mapped[int] = mapped_column(ForeignKey("matches.id"))
+    team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
 
+    started: Mapped[bool] = mapped_column(Boolean)
     min: Mapped[int] = mapped_column(SmallInteger)
     sh: Mapped[int] = mapped_column(SmallInteger)
     sot: Mapped[int] = mapped_column(SmallInteger)
@@ -88,19 +100,19 @@ class MatchReport(Base):
     fld: Mapped[int] = mapped_column(SmallInteger)
 
     # Relationships
-    match: Mapped["Match"] = relationship(back_populates="player_reports")
-    player: Mapped["Player"] = relationship(back_populates="match_reports")
+    player: Mapped["Player"] = relationship(back_populates="reports")
+    match: Mapped["Match"] = relationship(back_populates="player_match_reports")
+    team: Mapped["Team"] = relationship(back_populates="player_match_reports")
 
 
-class MatchPrediction(Base):
-    __tablename__ = "match_predictions"
+class PlayerMatchProbabilities(Base):
+    __tablename__ = "players_match_probabilities"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     match_id: Mapped[int] = mapped_column(ForeignKey("matches.id"))
     player_id: Mapped[int] = mapped_column(ForeignKey("players.id"))
-    field: Mapped[PredictionField] = mapped_column(Enum(PredictionField))
-    value: Mapped[float] = mapped_column(Float)
+    probabilities: Mapped[dict] = mapped_column(JSONB)
 
     # Relationships
-    match: Mapped["Match"] = relationship(back_populates="player_predictions")
-    player: Mapped["Player"] = relationship(back_populates="match_predictions")
+    match: Mapped["Match"] = relationship(back_populates="player_match_probabilities")
+    player: Mapped["Player"] = relationship(back_populates="probabilities")
