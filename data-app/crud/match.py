@@ -1,5 +1,5 @@
 from models import Match
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.orm import Session
 from schemas import Season
 from datetime import datetime
@@ -31,3 +31,10 @@ def get_or_create_match(
         session.flush()
 
     return match
+
+
+def count_season_matches(session: Session, season: Season) -> int:
+    stmt = select(func.count()).select_from(Match).where(Match.season == season)
+    count = session.execute(stmt).scalar()
+
+    return count or 0
