@@ -5,7 +5,7 @@ from scipy.stats import nbinom
 import pandas as pd
 import numpy as np
 from schemas import PredictionField
-from schema import BuildModelRow, PredictRow
+from .schema import BuildModelRow, PredictRow
 
 
 DECAY_RATE = -0.0065
@@ -22,12 +22,18 @@ class PlayerStatModel:
         df = pd.DataFrame([row.model_dump() for row in data])
         df = self._calculate_weight_col(df)
 
+        league_mean = 0.3319  # Or pull from your DB results
+        league_disp = 1.2606
+        calculated_alpha = (league_disp - 1) / league_mean
+
+        offset = np.log(df["min"] / 90)
+
         model = smf.glm(
             formula="stat ~ C(player_id) + C(opponent_id) + is_home + started",
             data=df,
-            family=sm.families.NegativeBinomial(),
+            family=sm.families.NegativeBinomial(alpha=calculated_alpha),
             var_weights=df["weight"],
-            offset=np.log(df["min"] / 90),
+            offset=offset,
         ).fit()
 
         self._models[field] = model
@@ -38,7 +44,7 @@ class PlayerStatModel:
         lambdas = self._predict(field, data)
         model = self._get_model(field)
 
-        alpha = model.scale
+        alpha = model.family.alpha
         n = 1 / alpha
         p = n / (n + lambdas)
 

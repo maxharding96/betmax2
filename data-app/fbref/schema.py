@@ -19,5 +19,8 @@ class Match(BaseModel):
     home_team: str
     away_team: str
     date: datetime
+
+
+class MatchWithReports(Match):
     home_reports: list[MatchReport]
     away_reports: list[MatchReport]

@@ -1,46 +1,26 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from schemas import League, PredictionField, Season
+from fbref import FBRef
+from scraper import Scraper
 from stats import PlayerStatModel
 from stats.schema import PredictRow
 from services.stats import build_model_rows, build_predict_rows
-from fbref import FBRef
-from scraper import Scraper
+from schemas import League, PredictionField, Season
 from database import get_session
-
-
-CURRENT_SEASON = Season.S_25
-
-app = FastAPI()
-
-
-class PredictInput(BaseModel):
-    field: PredictionField
-    league: League
-    date: str
-
-
-class Prediction(BaseModel):
-    player: str
-
-
-class PredictOutput(BaseModel):
-    predictions: list[Prediction]
+import nodriver as uc
 
 
 player_stat_model = PlayerStatModel()
 
 
-@app.post("/predict")
-async def predict(input: PredictInput):
-    field = input.field
-    league = input.league
-    date = input.date
-
+async def main():
     scraper_client = await Scraper.start()
     fbref_client = FBRef(scraper=scraper_client)
+    league = League.PREMIER_LEAGUE
+    season = Season.S_25
+    field = PredictionField.SOT
 
-    matches = await fbref_client.get_date_matches(league, CURRENT_SEASON, date)
+    date = "2026-03-14"
+
+    matches = await fbref_client.get_date_matches(league, season, date)
 
     with get_session() as session:
         rows = build_model_rows(session, league, field)
@@ -67,3 +47,9 @@ async def predict(input: PredictInput):
 
     for row, prediction in zip(predict_rows, predictions):
         print(row.player_id, prediction)
+
+    print(predictions)
+
+
+if __name__ == "__main__":
+    uc.loop().run_until_complete(main())

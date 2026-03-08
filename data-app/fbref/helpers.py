@@ -42,3 +42,13 @@ def get_schedule_table_id(league: League, season: Season) -> str:
     season_str = season_to_str[season]
 
     return f"sched_{season_str}_{league_code}_1"
+
+
+def get_matches_ext(date: str) -> str:
+    return f"/en/matches/{date}"
+
+
+str_to_league: dict[str, League] = {
+    "Premier League": League.PREMIER_LEAGUE,
+    "Championship": League.CHAMPIONSHIP,
+}

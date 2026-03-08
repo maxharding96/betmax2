@@ -1,11 +1,11 @@
 from scraper import Scraper
-from .helpers import get_schedule_ext
+from .helpers import get_matches_ext, get_schedule_ext, str_to_league
 from schemas import League, Season
 import pandas as pd
 import io
 from nodriver import Element
 from datetime import datetime
-from fbref.schema import MatchReport, Match
+from fbref.schema import MatchReport, Match, MatchWithReports
 
 
 BASE_URL = "https://fbref.com"
@@ -19,8 +19,53 @@ class FBRef:
         self._base_url = BASE_URL
         self._scraper = scraper
 
-    async def get_matches(
-        self, league: League, season: Season, *, start_index: int = 0
+    async def get_date_matches(
+        self, league: League, season: Season, date: str
+    ) -> list[Match]:
+        ext = get_matches_ext(date)
+        url = self._base_url + ext
+
+        page = await self._scraper.get_page(url)
+
+        all_tables = await page.select_all("table")
+
+        matches: list[Match] = []
+
+        for table in all_tables:
+            df = await self._parse_table(table)
+            # Check is a table of matches
+            if df.columns[0] != "Round":
+                continue
+
+            # Check if table is league you want
+            df_league = str_to_league.get(df.iat[0, 0])
+
+            if df_league is None or league != df_league:
+                continue
+
+            for row in df.itertuples():
+                match = Match(
+                    league=league,
+                    season=season,
+                    home_team=row.Home,
+                    away_team=row.Away,
+                    date=datetime.today(),
+                )
+
+                matches.append(match)
+
+            # Found the league table we want
+            break
+
+        return matches
+
+    async def get_played_matches(
+        self,
+        league: League,
+        season: Season,
+        *,
+        start_index: int = 0,
+        end_index: int = -1,
     ):
         ext = get_schedule_ext(league, season)
         url = self._base_url + ext
@@ -30,7 +75,7 @@ class FBRef:
         mr_elements = await page.find_all("Match Report")
         mr_exts = [el.attrs.get("href") for el in mr_elements if el.tag_name == "a"]
 
-        for match_ext in mr_exts[start_index:]:
+        for match_ext in mr_exts[start_index:end_index]:
             try:
                 match = await self._get_match(league, season, match_ext)
                 yield match
@@ -38,7 +83,9 @@ class FBRef:
                 print(f"Failed to scrape {match_ext}: {e}")
                 continue
 
-    async def _get_match(self, league: League, season: Season, ext: str) -> Match:
+    async def _get_match(
+        self, league: League, season: Season, ext: str
+    ) -> MatchWithReports:
         url = self._base_url + ext
         page = await self._scraper.get_page(url)
 
@@ -46,7 +93,7 @@ class FBRef:
         header = header_tag.text
 
         home_team, away_team = self._parse_teams(header)
-        date = self._parse_date(header)
+        match_date = self._parse_date(header)
 
         all_tables = await page.select_all("table")
 
@@ -58,12 +105,12 @@ class FBRef:
             report_table=all_tables[-2], lineup_table=all_tables[-6]
         )
 
-        return Match(
+        return MatchWithReports(
             league=league,
             season=season,
             home_team=home_team,
             away_team=away_team,
-            date=date,
+            date=match_date,
             home_reports=home_reports,
             away_reports=away_reports,
         )
@@ -82,6 +129,10 @@ class FBRef:
         reports: list[MatchReport] = []
 
         for row in df.itertuples(index=False):
+            # Must not include goalkeepers
+            if row.Pos == "GK":
+                continue
+
             report = MatchReport(
                 player=row.Player,
                 started=row.started,

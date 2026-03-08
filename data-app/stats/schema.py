@@ -8,13 +8,17 @@ Binary = Literal[0, 1]
 
 class PredictRow(BaseModel):
     player_id: str
+    player_name: str
+    team_id: str
     opponent_id: str
     is_home: Binary
     avg_minutes: int
+    started: int = 1
 
 
 class BuildModelRow(BaseModel):
     player_id: str
+    team_id: str
     opponent_id: str
     stat: float
     is_home: Binary
