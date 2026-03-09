@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from schemas import League, PredictionField, Season
 from stats import PlayerStatModel
@@ -11,17 +12,32 @@ from database import get_session
 
 CURRENT_SEASON = Season.S_25
 
+origins = [
+    "http://localhost:5173",  # Your frontend dev server
+    "http://127.0.0.1:5173",
+]
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows specific origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
 
 class PredictInput(BaseModel):
     field: PredictionField
+    over: int
     league: League
     date: str
 
 
 class Prediction(BaseModel):
     player: str
+    prediction: float
 
 
 class PredictOutput(BaseModel):
@@ -34,6 +50,7 @@ player_stat_model = PlayerStatModel()
 @app.post("/predict")
 async def predict(input: PredictInput):
     field = input.field
+    over = input.over
     league = input.league
     date = input.date
 
@@ -49,7 +66,7 @@ async def predict(input: PredictInput):
     for row in rows:
         players_in_model.add(row.player_id)
 
-    player_stat_model.build_model(field, rows)
+    player_stat_model.build_model(league, field, rows)
 
     predict_rows: list[PredictRow] = []
 
@@ -63,7 +80,15 @@ async def predict(input: PredictInput):
             predict_rows.extend(rows)
             break
 
-    predictions = player_stat_model.predict_probabilities(field, predict_rows, gte=1)
+    predictions = player_stat_model.predict_probabilities(
+        league, field, predict_rows, over
+    )
 
-    for row, prediction in zip(predict_rows, predictions):
-        print(row.player_id, prediction)
+    player_prediction = [
+        Prediction(player=row.player_name, prediction=prediction)
+        for row, prediction in zip(predict_rows, predictions)
+    ]
+
+    output = PredictOutput(predictions=player_prediction)
+
+    return output.model_dump()

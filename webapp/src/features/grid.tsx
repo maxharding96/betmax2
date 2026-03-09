@@ -6,8 +6,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useGetPredictions } from '@/hooks'
 
 export const Grid = () => {
+  const { data } = useGetPredictions()
+
+  if (!data) {
+    return null
+  }
+
   return (
     <Table>
       <TableHeader>
@@ -21,14 +28,16 @@ export const Grid = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
-          <TableCell className="font-medium">Bukayo Saka</TableCell>
-          <TableCell>Arsenal</TableCell>
-          <TableCell>Tottenham</TableCell>
-          <TableCell>Home</TableCell>
-          <TableCell>1.50</TableCell>
-          <TableCell className="text-right">2.00</TableCell>
-        </TableRow>
+        {data.predictions.map((p) => (
+          <TableRow key={p.player}>
+            <TableCell className="font-medium">{p.player}</TableCell>
+            <TableCell>Arsenal</TableCell>
+            <TableCell>Tottenham</TableCell>
+            <TableCell>Home</TableCell>
+            <TableCell>1.50</TableCell>
+            <TableCell className="text-right">{p.prediction}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   )
