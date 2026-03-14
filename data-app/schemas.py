@@ -15,7 +15,7 @@ class Season(enum.IntEnum):
     S_25 = 2
 
 
-class PredictionField(enum.IntEnum):
+class Field(enum.IntEnum):
     SH = 0
     SOT = 1
     FLS = 2
@@ -88,7 +88,7 @@ class MatchReport(MatchReportBase):
 
 class MatchPredictionBase(BaseSchema):
     id: int
-    field: PredictionField
+    field: Field
     value: float
     # FK IDs
     match_id: int

@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from schemas import League, PredictionField, Season
+from schemas import League, Field, Season
 from stats import PlayerStatModel
 from stats.schema import PredictRow
 from services.stats import build_model_rows, build_predict_rows
 from fbref import FBRef
-from scraper import Scraper
 from database import get_session
+from scraper import Scraper
+from odds import OddsChecker, OddsCache
+from redis_client import RedisClient
 
 
 CURRENT_SEASON = Season.S_25
@@ -29,7 +31,7 @@ app.add_middleware(
 
 
 class PredictInput(BaseModel):
-    field: PredictionField
+    field: Field
     over: int
     league: League
     date: str
@@ -46,6 +48,9 @@ class PredictOutput(BaseModel):
 
 player_stat_model = PlayerStatModel()
 
+redis = RedisClient()
+odds_cache = OddsCache(redis)
+
 
 @app.post("/predict")
 async def predict(input: PredictInput):
@@ -54,41 +59,51 @@ async def predict(input: PredictInput):
     league = input.league
     date = input.date
 
-    scraper_client = await Scraper.start()
-    fbref_client = FBRef(scraper=scraper_client)
+    scrpr = await Scraper.start()
+
+    fbref_client = FBRef(scrpr)
+    oddschecker = OddsChecker(scrpr)
 
     matches = await fbref_client.get_date_matches(league, CURRENT_SEASON, date)
 
-    with get_session() as session:
-        rows = build_model_rows(session, league, field)
+    for match in matches:
+        match_odds = odds_cache.get_match_odds(match)
+        if match_odds is None:
+            match_odds = await oddschecker.get_odds(match, [Field.SH, Field.SOT])
+            odds_cache.set_match_odds(match_odds)
 
-    players_in_model = set()
-    for row in rows:
-        players_in_model.add(row.player_id)
+        return match_odds.model_dump()
 
-    player_stat_model.build_model(league, field, rows)
+    # with get_session() as session:
+    #     rows = build_model_rows(session, league, field)
 
-    predict_rows: list[PredictRow] = []
+    # players_in_model = set()
+    # for row in rows:
+    #     players_in_model.add(row.player_id)
 
-    with get_session() as session:
-        for match in matches:
-            rows = [
-                row
-                for row in build_predict_rows(session, match)
-                if row.player_id in players_in_model
-            ]
-            predict_rows.extend(rows)
-            break
+    # player_stat_model.build_model(league, field, rows)
 
-    predictions = player_stat_model.predict_probabilities(
-        league, field, predict_rows, over
-    )
+    # predict_rows: list[PredictRow] = []
 
-    player_prediction = [
-        Prediction(player=row.player_name, prediction=prediction)
-        for row, prediction in zip(predict_rows, predictions)
-    ]
+    # with get_session() as session:
+    #     for match in matches:
+    #         rows = [
+    #             row
+    #             for row in build_predict_rows(session, match)
+    #             if row.player_id in players_in_model
+    #         ]
+    #         predict_rows.extend(rows)
+    #         break
 
-    output = PredictOutput(predictions=player_prediction)
+    # predictions = player_stat_model.predict_probabilities(
+    #     league, field, predict_rows, over
+    # )
 
-    return output.model_dump()
+    # player_prediction = [
+    #     Prediction(player=row.player_name, prediction=prediction)
+    #     for row, prediction in zip(predict_rows, predictions)
+    # ]
+
+    # output = PredictOutput(predictions=player_prediction)
+
+    # return output.model_dump()

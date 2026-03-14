@@ -3,7 +3,7 @@ from scraper import Scraper
 from stats import PlayerStatModel
 from stats.schema import PredictRow
 from services.stats import build_model_rows, build_predict_rows
-from schemas import League, PredictionField, Season
+from schemas import League, Field, Season
 from database import get_session
 import nodriver as uc
 
@@ -16,7 +16,7 @@ async def main():
     fbref_client = FBRef(scraper=scraper_client)
     league = League.PREMIER_LEAGUE
     season = Season.S_25
-    field = PredictionField.SOT
+    field = Field.SOT
 
     date = "2026-03-14"
 

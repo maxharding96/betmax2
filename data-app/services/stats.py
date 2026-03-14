@@ -1,4 +1,4 @@
-from schemas import PredictionField, League
+from schemas import Field, League
 from sqlalchemy import case, select, func, cast, Float
 from sqlalchemy.orm import Session
 from models import PlayerMatchReport, Match, Team, Player
@@ -9,17 +9,17 @@ from fbref.schema import Match as FbrefMatch
 from collections import defaultdict
 
 FIELD_COLUMN_MAP = {
-    PredictionField.SH: PlayerMatchReport.sh,
-    PredictionField.SOT: PlayerMatchReport.sot,
-    PredictionField.FLS: PlayerMatchReport.fls,
-    PredictionField.FLD: PlayerMatchReport.fld,
+    Field.SH: PlayerMatchReport.sh,
+    Field.SOT: PlayerMatchReport.sot,
+    Field.FLS: PlayerMatchReport.fls,
+    Field.FLD: PlayerMatchReport.fld,
 }
 
 
 def build_model_rows(
     session: Session,
     league: League,
-    field: PredictionField,
+    field: Field,
 ) -> list[BuildModelRow]:
     stat_col = FIELD_COLUMN_MAP.get(field)
     if stat_col is None:
@@ -152,7 +152,7 @@ def build_predict_rows(session: Session, match: FbrefMatch) -> list[PredictRow]:
     return rows
 
 
-def get_dispersion_by_league(session: Session, league: League, field: PredictionField):
+def get_dispersion_by_league(session: Session, league: League, field: Field):
     col = FIELD_COLUMN_MAP[field]
     avg_val = func.avg(col)
     var_val = func.variance(col)

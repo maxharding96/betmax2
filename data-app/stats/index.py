@@ -4,13 +4,13 @@ from statsmodels.genmod.generalized_linear_model import GLMResultsWrapper
 from scipy.stats import nbinom
 import pandas as pd
 import numpy as np
-from schemas import League, PredictionField
+from schemas import League, Field
 from .schema import BuildModelRow, PredictRow
 
 
 DECAY_RATE = -0.0065
 
-ModelKey = tuple[League, PredictionField]
+ModelKey = tuple[League, Field]
 
 
 class PlayerStatModel:
@@ -21,7 +21,7 @@ class PlayerStatModel:
         self._decay_rate = decay_rate
 
     def build_model(
-        self, league: League, field: PredictionField, data: list[BuildModelRow]
+        self, league: League, field: Field, data: list[BuildModelRow]
     ) -> None:
         df = pd.DataFrame([row.model_dump() for row in data])
         df = self._calculate_weight_col(df)
@@ -43,7 +43,7 @@ class PlayerStatModel:
         self._models[league, field] = model
 
     def predict_probabilities(
-        self, league: League, field: PredictionField, data: list[PredictRow], over: int
+        self, league: League, field: Field, data: list[PredictRow], over: int
     ) -> np.ndarray:
         lambdas = self._predict(league, field, data)
         model = self._get_model(league, field)
@@ -55,13 +55,13 @@ class PlayerStatModel:
         return nbinom.sf(over, n=n, p=p)
 
     def _predict(
-        self, league: League, field: PredictionField, data: list[PredictRow]
+        self, league: League, field: Field, data: list[PredictRow]
     ) -> pd.Series:
         model = self._get_model(league, field)
         df = pd.DataFrame([row.model_dump() for row in data])
         return model.predict(df, offset=np.log(df["avg_minutes"] / 90))
 
-    def _get_model(self, league: League, field: PredictionField) -> GLMResultsWrapper:
+    def _get_model(self, league: League, field: Field) -> GLMResultsWrapper:
         model = self._models.get((league, field))
         if model is None:
             raise ValueError(
