@@ -44,6 +44,9 @@ class FBRef:
                 continue
 
             for row in df.itertuples():
+                if row._10 == "Match Report":
+                    continue
+
                 match = Match(
                     league=league,
                     season=season,

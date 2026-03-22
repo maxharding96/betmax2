@@ -1,5 +1,5 @@
 from schemas import Field, League
-from sqlalchemy import case, select, func, cast, Float
+from sqlalchemy import case, select, func
 from sqlalchemy.orm import Session
 from models import PlayerMatchReport, Match, Team, Player
 from stats.schema import BuildModelRow, PredictRow
@@ -127,7 +127,9 @@ def build_predict_rows(session: Session, match: FbrefMatch) -> list[PredictRow]:
             player_id=str(player.id),
             player_name=player.name,
             team_id=str(home_team.id),
+            team=home_team.name,
             opponent_id=str(away_team.id),
+            opponent=away_team.name,
             is_home=1,
             started=1,
             avg_minutes=int(avg_minutes),
@@ -142,7 +144,9 @@ def build_predict_rows(session: Session, match: FbrefMatch) -> list[PredictRow]:
             player_id=str(player.id),
             player_name=player.name,
             team_id=str(away_team.id),
+            team=away_team.name,
             opponent_id=str(home_team.id),
+            opponent=home_team.name,
             is_home=0,
             started=1,
             avg_minutes=int(avg_minutes),

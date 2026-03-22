@@ -10,7 +10,9 @@ class PredictRow(BaseModel):
     player_id: str
     player_name: str
     team_id: str
+    team: str
     opponent_id: str
+    opponent: str
     is_home: Binary
     avg_minutes: int
     started: int = 1

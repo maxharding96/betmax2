@@ -1,2 +1,2 @@
-from .index import FBRef
-from .schema import Match, MatchReport
+from .client import FBRef
+from .cache import FBRefCache

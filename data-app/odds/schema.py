@@ -9,11 +9,6 @@ class Odds(BaseModel):
     value: str
 
 
-class FieldOdds(BaseModel):
-    field: Field
-    odds: list[Odds]
-
-
 class MatchOdds(BaseModel):
     match: Match
-    fields_odds: list[FieldOdds]
+    field_to_odds: dict[Field, list[Odds]]

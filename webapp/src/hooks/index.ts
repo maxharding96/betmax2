@@ -1,2 +1,2 @@
-export { useGetPredictions } from './useGetPredictions'
+export { useGetRows } from './useGetRows'
 export { useGridInputStore } from './useGridInputStore'

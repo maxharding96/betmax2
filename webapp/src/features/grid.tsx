@@ -6,14 +6,17 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { useGetPredictions } from '@/hooks'
+import { useGetRows } from '@/hooks'
+import { expectedValue, kellyCriterion, toPercent } from '@/utils/stats'
 
 export const Grid = () => {
-  const { data } = useGetPredictions()
+  const { data } = useGetRows()
 
-  if (!data) {
-    return null
-  }
+  const rows = (data?.rows ?? []).filter((row) => {
+    const ev = expectedValue(row.odds, row.prediction)
+    const kc = kellyCriterion(row.odds, row.prediction)
+    return ev > 0 && kc > 0
+  })
 
   return (
     <div className="h-200 overflow-auto">
@@ -26,17 +29,25 @@ export const Grid = () => {
             <TableHead>Venue</TableHead>
             <TableHead>Best Odds</TableHead>
             <TableHead>Prediction</TableHead>
+            <TableHead>EV (%)</TableHead>
+            <TableHead>Kelly Criterion (%)</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.predictions.map((p) => (
-            <TableRow key={p.player}>
-              <TableCell className="font-medium">{p.player}</TableCell>
-              <TableCell>Arsenal</TableCell>
-              <TableCell>Tottenham</TableCell>
-              <TableCell>Home</TableCell>
-              <TableCell>1.50</TableCell>
-              <TableCell className="text-right">{p.prediction}</TableCell>
+          {rows.map((row) => (
+            <TableRow key={row.player}>
+              <TableCell className="font-medium">{row.player}</TableCell>
+              <TableCell>{row.team}</TableCell>
+              <TableCell>{row.opponent}</TableCell>
+              <TableCell>{row.venue}</TableCell>
+              <TableCell>{row.odds}</TableCell>
+              <TableCell>{row.prediction.toFixed(2)}</TableCell>
+              <TableCell>
+                {toPercent(expectedValue(row.odds, row.prediction))}
+              </TableCell>
+              <TableCell className="text-right">
+                {toPercent(kellyCriterion(row.odds, row.prediction))}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

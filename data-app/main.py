@@ -1,15 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from schemas import League, Field, Season
+from schemas import Field, Season
 from stats import PlayerStatModel
-from stats.schema import PredictRow
 from services.stats import build_model_rows, build_predict_rows
-from fbref import FBRef
+from fbref import FBRefCache
 from database import get_session
 from scraper import Scraper
 from odds import OddsChecker, OddsCache
 from redis_client import RedisClient
+import difflib
+import io_schema as io
 
 
 CURRENT_SEASON = Season.S_25
@@ -30,80 +30,109 @@ app.add_middleware(
 )
 
 
-class PredictInput(BaseModel):
-    field: Field
-    over: int
-    league: League
-    date: str
-
-
-class Prediction(BaseModel):
-    player: str
-    prediction: float
-
-
-class PredictOutput(BaseModel):
-    predictions: list[Prediction]
-
-
 player_stat_model = PlayerStatModel()
 
 redis = RedisClient()
 odds_cache = OddsCache(redis)
+fbref_cache = FBRefCache(redis)
 
 
-@app.post("/predict")
-async def predict(input: PredictInput):
+@app.post("/get-matches")
+async def get_matches(input: io.GetMatchesInput):
+    league = input.league
+
+    matches = odds_cache.get_matches(league)
+
+    if not matches:
+        scrpr = await Scraper.start()
+        oddschecker = OddsChecker(scrpr)
+
+        matches = await oddschecker.get_matches(league)
+        odds_cache.set_matches(matches)
+
+        scrpr.stop()
+
+    output = io.GetMatchesOutput(matches=matches)
+    return output.model_dump()
+
+
+@app.post("/get-rows")
+async def get_rows(input: io.GetRowsInput):
+    match = input.match
     field = input.field
     over = input.over
-    league = input.league
-    date = input.date
 
-    scrpr = await Scraper.start()
+    # build model
+    with get_session() as session:
+        rows = build_model_rows(session, match.league, field)
 
-    fbref_client = FBRef(scrpr)
-    oddschecker = OddsChecker(scrpr)
+    players_in_model = set()
+    for row in rows:
+        players_in_model.add(row.player_id)
 
-    matches = await fbref_client.get_date_matches(league, CURRENT_SEASON, date)
+    player_stat_model.build_model(match.league, field, rows)
 
-    for match in matches:
-        match_odds = odds_cache.get_match_odds(match)
+    # get the odds
+    match_odds = odds_cache.get_match_odds(match)
+    if match_odds is None:
+        scrpr = await Scraper.start()
+        oddschecker = OddsChecker(scrpr)
+
+        match_odds = await oddschecker.get_odds(match, [Field.SH, Field.SOT])
         if match_odds is None:
-            match_odds = await oddschecker.get_odds(match, [Field.SH, Field.SOT])
-            odds_cache.set_match_odds(match_odds)
+            raise HTTPException(404, "Unable to retrieve match odds.")
 
-        return match_odds.model_dump()
+        odds_cache.set_match_odds(match_odds)
 
-    # with get_session() as session:
-    #     rows = build_model_rows(session, league, field)
+        scrpr.stop()
 
-    # players_in_model = set()
-    # for row in rows:
-    #     players_in_model.add(row.player_id)
+    field_odds = match_odds.field_to_odds[field]
+    player_to_odds = {odds.player: odds for odds in field_odds if odds.point == over}
+    players = list(player_to_odds.keys())
 
-    # player_stat_model.build_model(league, field, rows)
+    # get the predicitons
+    with get_session() as session:
+        predict_rows = [
+            row
+            for row in build_predict_rows(session, match)
+            if row.player_id in players_in_model
+        ]
 
-    # predict_rows: list[PredictRow] = []
+    predictions = player_stat_model.predict_probabilities(
+        match.league, field, predict_rows, over
+    )
 
-    # with get_session() as session:
-    #     for match in matches:
-    #         rows = [
-    #             row
-    #             for row in build_predict_rows(session, match)
-    #             if row.player_id in players_in_model
-    #         ]
-    #         predict_rows.extend(rows)
-    #         break
+    rows = []
 
-    # predictions = player_stat_model.predict_probabilities(
-    #     league, field, predict_rows, over
-    # )
+    for row, prediction in zip(predict_rows, predictions):
+        player_match = find_most_similar_name(row.player_name, players)
 
-    # player_prediction = [
-    #     Prediction(player=row.player_name, prediction=prediction)
-    #     for row, prediction in zip(predict_rows, predictions)
-    # ]
+        if player_match is None:
+            continue
 
-    # output = PredictOutput(predictions=player_prediction)
+        row = io.Row(
+            player=row.player_name,
+            team=row.team,
+            opponent=row.opponent,
+            venue="home" if row.is_home else "away",
+            odds=player_to_odds[player_match].value,
+            prediction=prediction,
+        )
 
-    # return output.model_dump()
+        rows.append(row)
+
+    output = io.GetRowsOutput(rows=rows)
+    return output.model_dump()
+
+
+def find_most_similar_name(target_name, name_list) -> str | None:
+    """
+    Finds the closest match to target_name within name_list.
+    Returns None if the list is empty.
+    """
+    # get_close_matches returns a list of matches ranked by similarity
+    # n=1 ensures we only get the single best match
+    # cutoff=0.0 ensures we get the best match even if it's not very similar
+    matches = difflib.get_close_matches(target_name, name_list, n=1, cutoff=0.0)
+
+    return matches[0] if matches else None

@@ -18,25 +18,50 @@ export const Field = {
   FLD: 3,
 } as const
 
-export const predictInputSchema = z.object({
-  field: z.enum(Field),
-  over: z.int(),
+export const matchSchema = z.object({
   league: z.enum(League),
+  season: z.enum(Season),
+  home_team: z.string(),
+  away_team: z.string(),
   date: z.string(),
 })
 
-export type PredictionInput = z.infer<typeof predictInputSchema>
+export const getMatchesInputSchema = z.object({
+  league: z.enum(League),
+})
 
-const predictionSchema = z.object({
+export type GetMatchesInput = z.infer<typeof getMatchesInputSchema>
+
+export const getMatchesOutputSchema = z.object({
+  matches: z.array(matchSchema),
+})
+
+export type GetMatchesOutput = z.infer<typeof getMatchesOutputSchema>
+
+export type Match = z.infer<typeof matchSchema>
+
+export const getRowsInputSchema = z.object({
+  match: matchSchema,
+  field: z.enum(Field),
+  over: z.float32(),
+})
+
+export type GetRowsInput = z.infer<typeof getRowsInputSchema>
+
+const rowSchema = z.object({
   player: z.string(),
+  team: z.string(),
+  opponent: z.string(),
+  venue: z.enum(['home', 'away']),
+  odds: z.string(),
   prediction: z.float32(),
 })
 
-export const predictionOutputSchema = z.object({
-  predictions: z.array(predictionSchema),
+export const getRowOutputSchema = z.object({
+  rows: z.array(rowSchema),
 })
 
-export type PredictionOutput = z.infer<typeof predictionOutputSchema>
+export type GetRowsOutput = z.infer<typeof getRowOutputSchema>
 
 type EnumValues<T extends Record<string, number>> = T[keyof T]
 

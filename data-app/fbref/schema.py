@@ -1,6 +1,5 @@
 from pydantic import BaseModel
-from schemas import League, Season
-from datetime import datetime
+from schemas import Match
 
 
 class MatchReport(BaseModel):
@@ -11,14 +10,6 @@ class MatchReport(BaseModel):
     sot: int
     fls: int
     fld: int
-
-
-class Match(BaseModel):
-    league: League
-    season: Season
-    home_team: str
-    away_team: str
-    date: datetime
 
 
 class MatchWithReports(Match):

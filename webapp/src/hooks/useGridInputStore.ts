@@ -1,24 +1,24 @@
 import { create } from 'zustand'
-import type { FieldValue, LeagueValue } from '@/types/data'
+import type { FieldValue, LeagueValue, Match } from '@/types/data'
 
 interface GridInputStore {
+  league?: LeagueValue
+  setLeague: (league: LeagueValue) => void
+  match?: Match
+  setMatch: (match: Match) => void
   field?: FieldValue
   setField: (field: FieldValue) => void
   over?: number
   setOver: (over: number) => void
-  league?: LeagueValue
-  setLeague: (league: LeagueValue) => void
-  date?: Date
-  setDate: (date: Date) => void
 }
 
 export const useGridInputStore = create<GridInputStore>((set) => ({
-  field: undefined,
-  setField: (field: FieldValue) => set(() => ({ field })),
-  over: 1,
-  setOver: (over: number) => set(() => ({ over })),
   league: undefined,
   setLeague: (league: LeagueValue) => set(() => ({ league })),
-  date: undefined,
-  setDate: (date: Date) => set(() => ({ date })),
+  match: undefined,
+  setMatch: (match: Match) => set(() => ({ match })),
+  field: undefined,
+  setField: (field: FieldValue) => set(() => ({ field })),
+  over: 0.5,
+  setOver: (over: number) => set(() => ({ over })),
 }))

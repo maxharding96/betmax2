@@ -1,0 +1,2186 @@
+{
+  "match": {
+    "league": 0,
+    "season": 2,
+    "home_team": "Burnley",
+    "away_team": "Bournemouth",
+    "date": "2026-03-14T13:09:14.177854"
+  },
+  "fields_odds": [
+    {
+      "field": 0,
+      "odds": [
+        {
+          "point": 0.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "1/33"
+        },
+        {
+          "point": 0.5,
+          "player": "Enes Unal Over",
+          "value": "1/33"
+        },
+        {
+          "point": 0.5,
+          "player": "Evanilson Over",
+          "value": "1/33"
+        },
+        {
+          "point": 0.5,
+          "player": "Rayan Vitor Over",
+          "value": "1/25"
+        },
+        {
+          "point": 0.5,
+          "player": "Marcus Tavernier Over",
+          "value": "1/20"
+        },
+        {
+          "point": 0.5,
+          "player": "David Brooks Over",
+          "value": "1/18"
+        },
+        {
+          "point": 0.5,
+          "player": "Zian Flemming Over",
+          "value": "1/16"
+        },
+        {
+          "point": 0.5,
+          "player": "Dominic Sadi Over",
+          "value": "1/14"
+        },
+        {
+          "point": 0.5,
+          "player": "Michael Dacosta Over",
+          "value": "1/12"
+        },
+        {
+          "point": 0.5,
+          "player": "Armando Broja Over",
+          "value": "1/10"
+        },
+        {
+          "point": 0.5,
+          "player": "Amine Adli Over",
+          "value": "1/10"
+        },
+        {
+          "point": 0.5,
+          "player": "Ashley Barnes Over",
+          "value": "1/7"
+        },
+        {
+          "point": 0.5,
+          "player": "Lyle Foster Over",
+          "value": "1/7"
+        },
+        {
+          "point": 0.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "2/13"
+        },
+        {
+          "point": 1.5,
+          "player": "Enes Unal Over",
+          "value": "2/13"
+        },
+        {
+          "point": 0.5,
+          "player": "Jaidon Anthony Over",
+          "value": "2/13"
+        },
+        {
+          "point": 0.5,
+          "player": "Alex Scott Over",
+          "value": "1/6"
+        },
+        {
+          "point": 0.5,
+          "player": "Ryan Christie Over",
+          "value": "1/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Marcus Edwards Over",
+          "value": "11/50"
+        },
+        {
+          "point": 1.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "1/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Malcom DaCosta Over",
+          "value": "1/4"
+        },
+        {
+          "point": 1.5,
+          "player": "Evanilson Over",
+          "value": "27/100"
+        },
+        {
+          "point": 1.5,
+          "player": "Rayan Vitor Over",
+          "value": "2/7"
+        },
+        {
+          "point": 0.5,
+          "player": "Loum Tchaouna Over",
+          "value": "3/10"
+        },
+        {
+          "point": 1.5,
+          "player": "Marcus Tavernier Over",
+          "value": "1/3"
+        },
+        {
+          "point": 0.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "1/3"
+        },
+        {
+          "point": 1.5,
+          "player": "Dominic Sadi Over",
+          "value": "4/11"
+        },
+        {
+          "point": 0.5,
+          "player": "Alex Toth Over",
+          "value": "3/8"
+        },
+        {
+          "point": 1.5,
+          "player": "Michael Dacosta Over",
+          "value": "4/9"
+        },
+        {
+          "point": 0.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "4/9"
+        },
+        {
+          "point": 2.5,
+          "player": "Enes Unal Over",
+          "value": "9/20"
+        },
+        {
+          "point": 1.5,
+          "player": "David Brooks Over",
+          "value": "4/9"
+        },
+        {
+          "point": 1.5,
+          "player": "Zian Flemming Over",
+          "value": "12/25"
+        },
+        {
+          "point": 0.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "13/25"
+        },
+        {
+          "point": 1.5,
+          "player": "Armando Broja Over",
+          "value": "8/15"
+        },
+        {
+          "point": 1.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "4/7"
+        },
+        {
+          "point": 1.5,
+          "player": "Amine Adli Over",
+          "value": "3/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "4/6"
+        },
+        {
+          "point": 1.5,
+          "player": "Ashley Barnes Over",
+          "value": "4/6"
+        },
+        {
+          "point": 0.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "8/11"
+        },
+        {
+          "point": 0.5,
+          "player": "Luis Florentino Over",
+          "value": "3/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Lucas Pires Over",
+          "value": "3/4"
+        },
+        {
+          "point": 1.5,
+          "player": "Lyle Foster Over",
+          "value": "3/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "31/40"
+        },
+        {
+          "point": 0.5,
+          "player": "Charlie Stevens Over",
+          "value": "4/5"
+        },
+        {
+          "point": 2.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "4/5"
+        },
+        {
+          "point": 2.5,
+          "player": "Evanilson Over",
+          "value": "4/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Alex Scott Over",
+          "value": "41/50"
+        },
+        {
+          "point": 1.5,
+          "player": "Jaidon Anthony Over",
+          "value": "41/50"
+        },
+        {
+          "point": 2.5,
+          "player": "Rayan Vitor Over",
+          "value": "17/20"
+        },
+        {
+          "point": 0.5,
+          "player": "Tyler Adams Over",
+          "value": "17/20"
+        },
+        {
+          "point": 0.5,
+          "player": "James Ward-Prowse Over",
+          "value": "9/10"
+        },
+        {
+          "point": 0.5,
+          "player": "James Hill Over",
+          "value": "10/11"
+        },
+        {
+          "point": 0.5,
+          "player": "Josh Laurent Over",
+          "value": "10/11"
+        },
+        {
+          "point": 1.5,
+          "player": "Marcus Edwards Over",
+          "value": "19/20"
+        },
+        {
+          "point": 0.5,
+          "player": "Adrien Truffert Over",
+          "value": "19/20"
+        },
+        {
+          "point": 1.5,
+          "player": "Ryan Christie Over",
+          "value": "1/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Loum Tchaouna Over",
+          "value": "1/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Marcus Tavernier Over",
+          "value": "1/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Dominic Sadi Over",
+          "value": "1/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Malcom DaCosta Over",
+          "value": "11/10"
+        },
+        {
+          "point": 0.5,
+          "player": "Bafode Diakite Over",
+          "value": "11/10"
+        },
+        {
+          "point": 3.5,
+          "player": "Enes Unal Over",
+          "value": "11/10"
+        },
+        {
+          "point": 0.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "6/5"
+        },
+        {
+          "point": 2.5,
+          "player": "Michael Dacosta Over",
+          "value": "5/4"
+        },
+        {
+          "point": 2.5,
+          "player": "David Brooks Over",
+          "value": "13/10"
+        },
+        {
+          "point": 2.5,
+          "player": "Zian Flemming Over",
+          "value": "27/20"
+        },
+        {
+          "point": 0.5,
+          "player": "Marcos Senesi Over",
+          "value": "7/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Joe Worrall Over",
+          "value": "29/20"
+        },
+        {
+          "point": 0.5,
+          "player": "Maxime Esteve Over",
+          "value": "6/4"
+        },
+        {
+          "point": 2.5,
+          "player": "Jaidon Anthony Over",
+          "value": "6/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Kyle Walker Over",
+          "value": "6/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Bashir Humphreys Over",
+          "value": "6/4"
+        },
+        {
+          "point": 3.5,
+          "player": "David Brooks Over",
+          "value": "6/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Axel Tuanzebe Over",
+          "value": "6/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "8/5"
+        },
+        {
+          "point": 2.5,
+          "player": "Armando Broja Over",
+          "value": "8/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Alex Toth Over",
+          "value": "13/8"
+        },
+        {
+          "point": 2.5,
+          "player": "Amine Adli Over",
+          "value": "17/10"
+        },
+        {
+          "point": 0.5,
+          "player": "Adam Smith Over",
+          "value": "7/4"
+        },
+        {
+          "point": 2.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "7/4"
+        },
+        {
+          "point": 2.5,
+          "player": "Ashley Barnes Over",
+          "value": "9/5"
+        },
+        {
+          "point": 3.5,
+          "player": "Evanilson Over",
+          "value": "9/5"
+        },
+        {
+          "point": 2.5,
+          "player": "Marcus Edwards Over",
+          "value": "15/8"
+        },
+        {
+          "point": 3.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "2/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "2/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Lyle Foster Over",
+          "value": "41/20"
+        },
+        {
+          "point": 1.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "85/40"
+        },
+        {
+          "point": 2.5,
+          "player": "Alex Scott Over",
+          "value": "11/5"
+        },
+        {
+          "point": 3.5,
+          "player": "Rayan Vitor Over",
+          "value": "11/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "9/4"
+        },
+        {
+          "point": 4.5,
+          "player": "Enes Unal Over",
+          "value": "12/5"
+        },
+        {
+          "point": 3.5,
+          "player": "Dominic Sadi Over",
+          "value": "5/2"
+        },
+        {
+          "point": 3.5,
+          "player": "Marcus Tavernier Over",
+          "value": "13/5"
+        },
+        {
+          "point": 3.5,
+          "player": "Zian Flemming Over",
+          "value": "14/5"
+        },
+        {
+          "point": 2.5,
+          "player": "Ryan Christie Over",
+          "value": "14/5"
+        },
+        {
+          "point": 3.5,
+          "player": "Michael Dacosta Over",
+          "value": "3/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Loum Tchaouna Over",
+          "value": "3/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Josh Laurent Over",
+          "value": "16/5"
+        },
+        {
+          "point": 1.5,
+          "player": "James Ward-Prowse Over",
+          "value": "10/3"
+        },
+        {
+          "point": 2.5,
+          "player": "Malcom DaCosta Over",
+          "value": "10/3"
+        },
+        {
+          "point": 1.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "10/3"
+        },
+        {
+          "point": 4.5,
+          "player": "David Brooks Over",
+          "value": "17/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Lucas Pires Over",
+          "value": "18/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Luis Florentino Over",
+          "value": "18/5"
+        },
+        {
+          "point": 4.5,
+          "player": "Zian Flemming Over",
+          "value": "18/5"
+        },
+        {
+          "point": 3.5,
+          "player": "Jaidon Anthony Over",
+          "value": "19/5"
+        },
+        {
+          "point": 3.5,
+          "player": "Amine Adli Over",
+          "value": "4/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Charlie Stevens Over",
+          "value": "4/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "4/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Evanilson Over",
+          "value": "4/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Alex Toth Over",
+          "value": "4/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Armando Broja Over",
+          "value": "4/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Tyler Adams Over",
+          "value": "17/4"
+        },
+        {
+          "point": 3.5,
+          "player": "Lyle Foster Over",
+          "value": "9/2"
+        },
+        {
+          "point": 3.5,
+          "player": "Ashley Barnes Over",
+          "value": "9/2"
+        },
+        {
+          "point": 4.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "9/2"
+        },
+        {
+          "point": 1.5,
+          "player": "James Hill Over",
+          "value": "9/2"
+        },
+        {
+          "point": 3.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "9/2"
+        },
+        {
+          "point": 3.5,
+          "player": "Marcus Edwards Over",
+          "value": "5/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Enes Unal Over",
+          "value": "5/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "5/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Rayan Vitor Over",
+          "value": "5/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Alex Toth Over",
+          "value": "5/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "5/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Adrien Truffert Over",
+          "value": "5/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Bafode Diakite Over",
+          "value": "11/2"
+        },
+        {
+          "point": 3.5,
+          "player": "Alex Scott Over",
+          "value": "6/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "6/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Dominic Sadi Over",
+          "value": "6/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "6/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "13/2"
+        },
+        {
+          "point": 4.5,
+          "player": "Marcus Tavernier Over",
+          "value": "13/2"
+        },
+        {
+          "point": 5.5,
+          "player": "David Brooks Over",
+          "value": "13/2"
+        },
+        {
+          "point": 5.5,
+          "player": "Evanilson Over",
+          "value": "13/2"
+        },
+        {
+          "point": 3.5,
+          "player": "Loum Tchaouna Over",
+          "value": "7/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Michael Dacosta Over",
+          "value": "7/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Marcos Senesi Over",
+          "value": "7/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Zian Flemming Over",
+          "value": "7/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "8/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Joe Worrall Over",
+          "value": "8/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Rayan Vitor Over",
+          "value": "8/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Maxime Esteve Over",
+          "value": "17/2"
+        },
+        {
+          "point": 1.5,
+          "player": "Kyle Walker Over",
+          "value": "17/2"
+        },
+        {
+          "point": 3.5,
+          "player": "Ryan Christie Over",
+          "value": "35/4"
+        },
+        {
+          "point": 3.5,
+          "player": "Malcom DaCosta Over",
+          "value": "9/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Amine Adli Over",
+          "value": "9/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "9/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Marcus Tavernier Over",
+          "value": "9/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Axel Tuanzebe Over",
+          "value": "9/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Alex Toth Over",
+          "value": "9/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Jaidon Anthony Over",
+          "value": "9/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Bashir Humphreys Over",
+          "value": "19/2"
+        },
+        {
+          "point": 4.5,
+          "player": "Alex Scott Over",
+          "value": "10/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Enes Unal Over",
+          "value": "10/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Adam Smith Over",
+          "value": "10/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Armando Broja Over",
+          "value": "10/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "11/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "11/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Lyle Foster Over",
+          "value": "11/1"
+        },
+        {
+          "point": 2.5,
+          "player": "James Ward-Prowse Over",
+          "value": "12/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Charlie Stevens Over",
+          "value": "12/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Josh Laurent Over",
+          "value": "12/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Ashley Barnes Over",
+          "value": "12/1"
+        },
+        {
+          "point": 6.5,
+          "player": "David Brooks Over",
+          "value": "13/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "13/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Dominic Sadi Over",
+          "value": "14/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Loum Tchaouna Over",
+          "value": "14/1"
+        },
+        {
+          "point": 7.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "14/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Lucas Pires Over",
+          "value": "14/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Alex Toth Over",
+          "value": "14/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "14/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Amine Adli Over",
+          "value": "14/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Luis Florentino Over",
+          "value": "14/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Marcus Edwards Over",
+          "value": "14/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Evanilson Over",
+          "value": "15/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Tyler Adams Over",
+          "value": "16/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Armando Broja Over",
+          "value": "16/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "16/1"
+        },
+        {
+          "point": 2.5,
+          "player": "James Hill Over",
+          "value": "16/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Zian Flemming Over",
+          "value": "16/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "16/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Rayan Vitor Over",
+          "value": "16/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Michael Dacosta Over",
+          "value": "16/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Loum Tchaouna Over",
+          "value": "18/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Adrien Truffert Over",
+          "value": "18/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Jaidon Anthony Over",
+          "value": "18/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Marcus Tavernier Over",
+          "value": "18/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "18/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Malcom DaCosta Over",
+          "value": "20/1"
+        },
+        {
+          "point": 7.5,
+          "player": "Enes Unal Over",
+          "value": "20/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Bafode Diakite Over",
+          "value": "20/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Dominic Sadi Over",
+          "value": "20/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "20/1"
+        },
+        {
+          "point": 8.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "20/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Jaidon Anthony Over",
+          "value": "20/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "22/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "22/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Axel Tuanzebe Over",
+          "value": "22/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "22/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Ryan Christie Over",
+          "value": "25/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Alex Scott Over",
+          "value": "25/1"
+        },
+        {
+          "point": 7.5,
+          "player": "David Brooks Over",
+          "value": "25/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "25/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Maxime Esteve Over",
+          "value": "28/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Lyle Foster Over",
+          "value": "28/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Josh Laurent Over",
+          "value": "28/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "28/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Luis Florentino Over",
+          "value": "28/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Joe Worrall Over",
+          "value": "28/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Lucas Pires Over",
+          "value": "28/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Bafode Diakite Over",
+          "value": "28/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Marcos Senesi Over",
+          "value": "28/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Bashir Humphreys Over",
+          "value": "28/1"
+        },
+        {
+          "point": 3.5,
+          "player": "James Ward-Prowse Over",
+          "value": "28/1"
+        },
+        {
+          "point": 6.5,
+          "player": "Amine Adli Over",
+          "value": "30/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Marcus Edwards Over",
+          "value": "33/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Adrien Truffert Over",
+          "value": "33/1"
+        },
+        {
+          "point": 7.5,
+          "player": "Evanilson Over",
+          "value": "33/1"
+        },
+        {
+          "point": 5.5,
+          "player": "Ashley Barnes Over",
+          "value": "33/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Ryan Christie Over",
+          "value": "33/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Kyle Walker Over",
+          "value": "33/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "33/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Adam Smith Over",
+          "value": "35/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "40/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "50/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Adam Smith Over",
+          "value": "50/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Maxime Esteve Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "James Hill Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Joe Worrall Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Kyle Walker Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Bashir Humphreys Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Marcos Senesi Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Tyler Adams Over",
+          "value": "66/1"
+        }
+      ]
+    },
+    {
+      "field": 1,
+      "odds": [
+        {
+          "point": 0.5,
+          "player": "Enes Unal Over",
+          "value": "1/3"
+        },
+        {
+          "point": 0.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "2/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Evanilson Over",
+          "value": "1/2"
+        },
+        {
+          "point": 0.5,
+          "player": "Rayan Vitor Over",
+          "value": "8/15"
+        },
+        {
+          "point": 0.5,
+          "player": "Dominic Sadi Over",
+          "value": "4/7"
+        },
+        {
+          "point": 0.5,
+          "player": "Michael Dacosta Over",
+          "value": "4/6"
+        },
+        {
+          "point": 0.5,
+          "player": "Marcus Tavernier Over",
+          "value": "4/6"
+        },
+        {
+          "point": 0.5,
+          "player": "David Brooks Over",
+          "value": "3/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Zian Flemming Over",
+          "value": "3/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Armando Broja Over",
+          "value": "3/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "5/6"
+        },
+        {
+          "point": 0.5,
+          "player": "Amine Adli Over",
+          "value": "17/20"
+        },
+        {
+          "point": 0.5,
+          "player": "Ashley Barnes Over",
+          "value": "1/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Jaidon Anthony Over",
+          "value": "1/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Lyle Foster Over",
+          "value": "1/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Malcom DaCosta Over",
+          "value": "5/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Marcus Edwards Over",
+          "value": "5/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Ryan Christie Over",
+          "value": "5/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Alex Scott Over",
+          "value": "6/4"
+        },
+        {
+          "point": 1.5,
+          "player": "Enes Unal Over",
+          "value": "6/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Loum Tchaouna Over",
+          "value": "31/20"
+        },
+        {
+          "point": 0.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "8/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Alex Toth Over",
+          "value": "13/8"
+        },
+        {
+          "point": 1.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "9/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "21/10"
+        },
+        {
+          "point": 1.5,
+          "player": "Evanilson Over",
+          "value": "21/10"
+        },
+        {
+          "point": 0.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "85/40"
+        },
+        {
+          "point": 1.5,
+          "player": "Rayan Vitor Over",
+          "value": "5/2"
+        },
+        {
+          "point": 0.5,
+          "player": "Charlie Stevens Over",
+          "value": "11/4"
+        },
+        {
+          "point": 1.5,
+          "player": "Dominic Sadi Over",
+          "value": "11/4"
+        },
+        {
+          "point": 0.5,
+          "player": "James Ward-Prowse Over",
+          "value": "29/10"
+        },
+        {
+          "point": 1.5,
+          "player": "Zian Flemming Over",
+          "value": "3/1"
+        },
+        {
+          "point": 1.5,
+          "player": "David Brooks Over",
+          "value": "3/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Josh Laurent Over",
+          "value": "16/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Michael Dacosta Over",
+          "value": "10/3"
+        },
+        {
+          "point": 1.5,
+          "player": "Marcus Tavernier Over",
+          "value": "17/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "7/2"
+        },
+        {
+          "point": 1.5,
+          "player": "Armando Broja Over",
+          "value": "18/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Tyler Adams Over",
+          "value": "15/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "19/5"
+        },
+        {
+          "point": 1.5,
+          "player": "Amine Adli Over",
+          "value": "19/5"
+        },
+        {
+          "point": 0.5,
+          "player": "James Hill Over",
+          "value": "17/4"
+        },
+        {
+          "point": 1.5,
+          "player": "Jaidon Anthony Over",
+          "value": "22/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "9/2"
+        },
+        {
+          "point": 1.5,
+          "player": "Lyle Foster Over",
+          "value": "9/2"
+        },
+        {
+          "point": 1.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "9/2"
+        },
+        {
+          "point": 0.5,
+          "player": "Lucas Pires Over",
+          "value": "24/5"
+        },
+        {
+          "point": 0.5,
+          "player": "Adrien Truffert Over",
+          "value": "5/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "5/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Marcos Senesi Over",
+          "value": "5/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Bafode Diakite Over",
+          "value": "5/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Enes Unal Over",
+          "value": "5/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Luis Florentino Over",
+          "value": "21/4"
+        },
+        {
+          "point": 2.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "21/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Bashir Humphreys Over",
+          "value": "21/4"
+        },
+        {
+          "point": 0.5,
+          "player": "Axel Tuanzebe Over",
+          "value": "11/2"
+        },
+        {
+          "point": 0.5,
+          "player": "Kyle Walker Over",
+          "value": "11/2"
+        },
+        {
+          "point": 0.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "11/2"
+        },
+        {
+          "point": 1.5,
+          "player": "Marcus Edwards Over",
+          "value": "11/2"
+        },
+        {
+          "point": 1.5,
+          "player": "Ashley Barnes Over",
+          "value": "11/2"
+        },
+        {
+          "point": 0.5,
+          "player": "Joe Worrall Over",
+          "value": "11/2"
+        },
+        {
+          "point": 1.5,
+          "player": "Loum Tchaouna Over",
+          "value": "6/1"
+        },
+        {
+          "point": 0.5,
+          "player": "Adam Smith Over",
+          "value": "13/2"
+        },
+        {
+          "point": 2.5,
+          "player": "Evanilson Over",
+          "value": "13/2"
+        },
+        {
+          "point": 0.5,
+          "player": "Maxime Esteve Over",
+          "value": "7/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Ryan Christie Over",
+          "value": "8/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Alex Scott Over",
+          "value": "8/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Malcom DaCosta Over",
+          "value": "8/1"
+        },
+        {
+          "point": 2.5,
+          "player": "David Brooks Over",
+          "value": "9/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Rayan Vitor Over",
+          "value": "9/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Amine Adli Over",
+          "value": "9/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Zian Flemming Over",
+          "value": "9/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Alex Toth Over",
+          "value": "10/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Dominic Sadi Over",
+          "value": "10/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "11/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Michael Dacosta Over",
+          "value": "12/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Lyle Foster Over",
+          "value": "14/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Jaidon Anthony Over",
+          "value": "14/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "14/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Armando Broja Over",
+          "value": "14/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Marcus Tavernier Over",
+          "value": "15/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "16/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Enes Unal Over",
+          "value": "16/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "16/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Evanilson Over",
+          "value": "17/1"
+        },
+        {
+          "point": 1.5,
+          "player": "James Ward-Prowse Over",
+          "value": "18/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "18/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Charlie Stevens Over",
+          "value": "18/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Tyler Adams Over",
+          "value": "19/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Lucas Pires Over",
+          "value": "19/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Eli Junior Kroupi Over",
+          "value": "20/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Ashley Barnes Over",
+          "value": "20/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "20/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Josh Laurent Over",
+          "value": "22/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Zian Flemming Over",
+          "value": "22/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Rayan Vitor Over",
+          "value": "25/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Marcus Edwards Over",
+          "value": "25/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "25/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Loum Tchaouna Over",
+          "value": "25/1"
+        },
+        {
+          "point": 3.5,
+          "player": "David Brooks Over",
+          "value": "25/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "28/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Remy Rees-Dottin Over",
+          "value": "30/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Ryan Christie Over",
+          "value": "30/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Evanilson Over",
+          "value": "30/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Alex Scott Over",
+          "value": "30/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Marcos Senesi Over",
+          "value": "33/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "33/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Bashir Humphreys Over",
+          "value": "33/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Marcus Tavernier Over",
+          "value": "35/1"
+        },
+        {
+          "point": 1.5,
+          "player": "James Hill Over",
+          "value": "35/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Lyle Foster Over",
+          "value": "35/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Amine Adli Over",
+          "value": "35/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Alex Toth Over",
+          "value": "40/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Bafode Diakite Over",
+          "value": "40/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Ashley Barnes Over",
+          "value": "40/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Adam Smith Over",
+          "value": "40/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Kyle Walker Over",
+          "value": "45/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Armando Broja Over",
+          "value": "45/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Luis Florentino Over",
+          "value": "45/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "50/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Bafode Diakite Over",
+          "value": "50/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "50/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Joe Worrall Over",
+          "value": "50/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Adrien Truffert Over",
+          "value": "50/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Adrien Truffert Over",
+          "value": "50/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "50/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Loum Tchaouna Over",
+          "value": "50/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Amine Adli Over",
+          "value": "50/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Maxime Esteve Over",
+          "value": "55/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Axel Tuanzebe Over",
+          "value": "55/1"
+        },
+        {
+          "point": 4.5,
+          "player": "David Brooks Over",
+          "value": "60/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Jaidon Anthony Over",
+          "value": "60/1"
+        },
+        {
+          "point": 1.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "60/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Axel Tuanzebe Over",
+          "value": "66/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "66/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Tyler Adams Over",
+          "value": "66/1"
+        },
+        {
+          "point": 2.5,
+          "player": "James Hill Over",
+          "value": "66/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Josh Laurent Over",
+          "value": "66/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Adam Smith Over",
+          "value": "66/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Marcus Edwards Over",
+          "value": "66/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "66/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Jaidon Anthony Over",
+          "value": "70/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Lyle Foster Over",
+          "value": "70/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Jacob Bruun Larsen Over",
+          "value": "70/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Veljko Milosavljevic Over",
+          "value": "70/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Alex Scott Over",
+          "value": "80/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Marcos Senesi Over",
+          "value": "80/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Maxime Esteve Over",
+          "value": "80/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Ryan Christie Over",
+          "value": "80/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Joe Worrall Over",
+          "value": "80/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "80/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Kyle Walker Over",
+          "value": "80/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Bashir Humphreys Over",
+          "value": "80/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "90/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Alex Toth Over",
+          "value": "90/1"
+        },
+        {
+          "point": 3.5,
+          "player": "James Hill Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Ryan Christie Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Marcos Senesi Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Tyler Adams Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Adrien Truffert Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "James Ward-Prowse Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Ashley Barnes Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Tyler Adams Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "James Ward-Prowse Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Lesley Ugochukwu Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Joe Worrall Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Lucas Pires Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Alex Toth Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Luis Florentino Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Marcus Edwards Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Kyle Walker Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Bafode Diakite Over",
+          "value": "100/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Luis Florentino Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Luis Florentino Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Adrien Truffert Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Bafode Diakite Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Lucas Pires Over",
+          "value": "100/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Lucas Pires Over",
+          "value": "100/1"
+        },
+        {
+          "point": 2.5,
+          "player": "James Ward-Prowse Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Alex Scott Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Adam Smith Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Hannibal Mejbri Over",
+          "value": "100/1"
+        },
+        {
+          "point": 2.5,
+          "player": "Josh Laurent Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Maxime Esteve Over",
+          "value": "100/1"
+        },
+        {
+          "point": 4.5,
+          "player": "Alejandro Jimenez Over",
+          "value": "100/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Joe Worrall Over",
+          "value": "250/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Kyle Walker Over",
+          "value": "300/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Bashir Humphreys Over",
+          "value": "300/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Quilindschy Hartman Over",
+          "value": "400/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Adam Smith Over",
+          "value": "400/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Marcos Senesi Over",
+          "value": "400/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Hjalmar Ekdal Over",
+          "value": "400/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Maxime Esteve Over",
+          "value": "400/1"
+        },
+        {
+          "point": 3.5,
+          "player": "Axel Tuanzebe Over",
+          "value": "400/1"
+        }
+      ]
+    }
+  ]
+}
