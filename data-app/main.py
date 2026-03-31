@@ -74,6 +74,7 @@ async def get_rows(input: io.GetRowsInput):
 
     # get the odds
     match_odds = odds_cache.get_match_odds(match)
+
     if match_odds is None:
         scrpr = await Scraper.start()
         oddschecker = OddsChecker(scrpr)
@@ -86,7 +87,13 @@ async def get_rows(input: io.GetRowsInput):
 
         scrpr.stop()
 
-    field_odds = match_odds.field_to_odds[field]
+    try:
+        field_odds = match_odds.field_to_odds[field]
+    except KeyError:
+        # Too early to retrive match odds
+        output = io.GetRowsOutput(rows=[])
+        return output.model_dump()
+
     player_to_odds = {odds.player: odds for odds in field_odds if odds.point == over}
     players = list(player_to_odds.keys())
 

@@ -6,11 +6,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Spinner } from '@/components/ui/spinner'
 import { useGetRows } from '@/hooks'
 import { expectedValue, kellyCriterion, toPercent } from '@/utils/stats'
 
 export const Grid = () => {
-  const { data } = useGetRows()
+  const { data, isLoading, error } = useGetRows()
 
   const rows = (data?.rows ?? []).filter((row) => {
     const ev = expectedValue(row.odds, row.prediction)
@@ -52,6 +53,32 @@ export const Grid = () => {
           ))}
         </TableBody>
       </Table>
+      <div className="p-8 flex justify-center">
+        <GridState
+          hasData={data?.rows !== undefined}
+          isLoading={isLoading}
+          error={error}
+        />
+      </div>
     </div>
   )
+}
+
+interface GridStateProps {
+  hasData: boolean
+  isLoading: boolean
+  error: Error | null
+}
+
+const GridState = (props: GridStateProps) => {
+  const { hasData, isLoading, error } = props
+
+  if (isLoading) return <Spinner className="size-6" />
+
+  if (error) return <p className="text-red-600">{error.message}</p>
+
+  if (hasData)
+    return <p className="text-muted-foreground">No good value odds found.</p>
+
+  return <p className="text-muted-foreground">What odds do you want to find?</p>
 }
