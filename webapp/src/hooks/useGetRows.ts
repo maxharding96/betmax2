@@ -5,25 +5,31 @@ import type { GetRowsInput } from '@/types/data'
 import { useShallow } from 'zustand/react/shallow'
 
 export const useGetRows = () => {
-  const { match, field, over } = useGridInputStore(
+  const { league, matches, field, over } = useGridInputStore(
     useShallow((state) => ({
-      match: state.match,
+      league: state.league,
+      matches: state.matches,
       field: state.field,
       over: state.over,
     })),
   )
 
-  const enabled = Boolean(!!match && field !== undefined && !!over)
+  const enabled = Boolean(!!matches && field !== undefined && !!over)
+
+  const homeTeams = matches?.sort((a, b) => (b > a ? 1 : 0))
 
   const { data, isLoading, isFetching, error } = useQuery({
-    queryKey: ['rows', match, field, over],
+    queryKey: ['rows', homeTeams, field, over],
     queryFn: () =>
       getRows({
-        match,
+        league,
+        home_teams: homeTeams,
         field,
         over,
       } as GetRowsInput),
     enabled,
+    staleTime: Infinity,
+    gcTime: Infinity,
   })
 
   return {

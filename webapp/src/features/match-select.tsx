@@ -1,55 +1,69 @@
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+  Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxValue,
+} from '@/components/ui/combobox'
+
 import { useGridInputStore } from '@/hooks'
 import { useGetMatches } from '@/hooks/useGetMatches'
 import type { Match } from '@/types/data'
 
 export const MatchSelect = () => {
-  const match = useGridInputStore((state) => state.match)
-  const setMatch = useGridInputStore((state) => state.setMatch)
+  const selected = useGridInputStore((state) => state.matches)
+  const setSelected = useGridInputStore((state) => state.setMatches)
 
   const { data } = useGetMatches()
 
   const matches = data?.matches ?? []
+
+  const matchKey = (match: Match): string => {
+    return match.home_team
+  }
 
   const stringifyMatch = (match: Match): string => {
     return `${match.home_team} vs. ${match.away_team}`
   }
 
   const matchMap = Object.fromEntries(
-    matches.map((match) => [stringifyMatch(match), match]),
+    matches.map((match) => [matchKey(match), match]),
   )
 
-  const handleValueChange = (value: string) => {
-    return setMatch(matchMap[value])
+  const handleValueChange = (value: string[]) => {
+    console.log(value)
+    return setSelected(value)
   }
 
   return (
-    <Select
-      value={match !== undefined ? stringifyMatch(match) : ''}
+    <Combobox
+      items={matches.map(matchKey)}
+      multiple
+      value={selected}
       onValueChange={handleValueChange}
     >
-      <SelectTrigger className="w-45">
-        <SelectValue placeholder="Select league" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          {matches.map((match) => {
-            const matchStr = stringifyMatch(match)
-            return (
-              <SelectItem key={matchStr} value={matchStr}>
-                {matchStr}
-              </SelectItem>
-            )
-          })}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+      <ComboboxChips>
+        <ComboboxValue>
+          {selected?.map((item) => (
+            <ComboboxChip key={item}>{item}</ComboboxChip>
+          ))}
+        </ComboboxValue>
+        <ComboboxChipsInput placeholder="Select matches" />
+      </ComboboxChips>
+      <ComboboxContent className="w-fit m-2">
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {stringifyMatch(matchMap[item])}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
   )
 }

@@ -30,13 +30,12 @@ class OddsCache:
         match = matches[0]
         key = self._matches_key(match.league)
 
-        # 6 hours
-        ttl = 60 * 60 * 6
-
+        ttl = 60 * 60 * 6  # 6 hours
         self._redis.set(key, adapter.dump_json(matches), ttl)
 
     def get_match_odds(self, match: Match) -> MatchOdds | None:
-        raw = self._redis.get(self._match_odds_key(match))
+        key = self._match_odds_key(match)
+        raw = self._redis.get(key)
         if raw is None:
             return None
         return MatchOdds.model_validate_json(raw)
@@ -44,7 +43,5 @@ class OddsCache:
     def set_match_odds(self, match_odds: MatchOdds) -> None:
         raw = match_odds.model_dump_json()
 
-        # 1 hour
-        ttl = 60 * 60
-
+        ttl = 60 * 60  # 1 hour
         self._redis.set(self._match_odds_key(match_odds.match), raw, ttl)

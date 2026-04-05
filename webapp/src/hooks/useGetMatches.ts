@@ -13,6 +13,8 @@ export const useGetMatches = () => {
         league,
       } as GetMatchesInput),
     enabled: league !== undefined,
+    staleTime: Infinity,
+    gcTime: Infinity,
   })
 
   return {

@@ -26,6 +26,22 @@ OC_TO_FBREF_TEAM = {
     "Tottenham": "Tottenham Hotspur",
     "West Ham": "West Ham United",
     "Wolverhampton": "Wolverhampton Wanderers",
+    # Championship
+    "Coventry": "Coventry City",
+    "Ipswich": "Ipswich Town",
+    "Hull": "Hull City",
+    "Derby": "Derby County",
+    "Norwich": "Norwich City",
+    "Birmingham": "Birmingham City",
+    "Preston": "Preston North End",
+    "Swansea": "Swansea City",
+    "Stoke": "Stoke City",
+    "Sheffield Utd": "Sheffield United",
+    "Charlton": "Charlton Athletic",
+    "Blackburn": "Blackburn Rovers",
+    "Leicster": "Leicester City",
+    "Oxford": "Oxford United",
+    "Sheffield Wednesday": "Sheffield Weds",
 }
 
 FBREF_TO_OC_TEAM = {v: k for k, v in OC_TO_FBREF_TEAM.items()}

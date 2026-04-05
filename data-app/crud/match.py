@@ -1,12 +1,13 @@
 from models import Match
 from sqlalchemy import select, func
 from sqlalchemy.orm import Session
-from schemas import Season
+from schemas import League, Season
 from datetime import datetime
 
 
 def get_or_create_match(
     session: Session,
+    league: League,
     season: Season,
     home_team_id: int,
     away_team_id: int,
@@ -22,6 +23,7 @@ def get_or_create_match(
 
     if not match:
         match = Match(
+            league=league,
             season=season,
             home_team_id=home_team_id,
             away_team_id=away_team_id,

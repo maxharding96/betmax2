@@ -32,7 +32,7 @@ class OddsChecker:
 
         if see_all_matches_btn:
             await see_all_matches_btn.click()
-            await page.sleep(1)
+            await page.sleep(0.2)
 
         team_selector = league_to_team_selector[league]
 
@@ -43,8 +43,6 @@ class OddsChecker:
         for i in range(0, len(teams), 2):
             home_team = convert_to_fbref_team(teams[i].text)
             away_team = convert_to_fbref_team(teams[i + 1].text)
-
-            print(home_team, away_team)
 
             match = Match(
                 home_team=home_team,
@@ -86,7 +84,7 @@ class OddsChecker:
             return None
 
         await header.click()
-        await page.sleep(1)
+        await page.sleep(0.2)
 
         parent_div = header.parent
         if not parent_div:

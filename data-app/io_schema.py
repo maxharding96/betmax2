@@ -4,7 +4,8 @@ from typing import Literal
 
 
 class GetRowsInput(BaseModel):
-    match: Match
+    league: League
+    home_teams: list[str]
     field: Field
     over: float
 

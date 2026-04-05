@@ -13,12 +13,15 @@ DECAY_RATE = -0.0065
 ModelKey = tuple[League, Field]
 
 
-class PlayerStatModel:
+class PlayerModel:
     _models: dict[ModelKey, GLMResultsWrapper]
 
     def __init__(self, decay_rate: float = DECAY_RATE):
         self._models = {}
         self._decay_rate = decay_rate
+
+    def model_exists(self, league: League, field: Field) -> bool:
+        return self._models.get((league, field)) is not None
 
     def build_model(
         self, league: League, field: Field, data: list[BuildModelRow]
@@ -43,7 +46,7 @@ class PlayerStatModel:
         self._models[league, field] = model
 
     def predict_probabilities(
-        self, league: League, field: Field, data: list[PredictRow], over: int
+        self, league: League, field: Field, data: list[PredictRow], over: float
     ) -> np.ndarray:
         lambdas = self._predict(league, field, data)
         model = self._get_model(league, field)
@@ -59,6 +62,7 @@ class PlayerStatModel:
     ) -> pd.Series:
         model = self._get_model(league, field)
         df = pd.DataFrame([row.model_dump() for row in data])
+
         return model.predict(df, offset=np.log(df["avg_minutes"] / 90))
 
     def _get_model(self, league: League, field: Field) -> GLMResultsWrapper:

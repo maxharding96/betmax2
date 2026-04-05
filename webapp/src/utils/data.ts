@@ -26,6 +26,4 @@ export const seasonOptions = enumToOptions(Season, {
 export const fieldOptions = enumToOptions(Field, {
   SH: 'Shots',
   SOT: 'Shots on Target',
-  FLS: 'Fouls Conceded',
-  FLD: 'Fouls Drawn',
 })

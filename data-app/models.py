@@ -25,7 +25,6 @@ class Team(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String, unique=True)
-    league: Mapped[League] = mapped_column(Enum(League))
 
     # Relationships
     home_matches: Mapped[List["Match"]] = relationship(
@@ -59,6 +58,7 @@ class Match(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     date: Mapped[datetime] = mapped_column(DateTime)
+    league: Mapped[League] = mapped_column(Enum(League))
     season: Mapped[Season] = mapped_column(Enum(Season))
     home_team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
     away_team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))

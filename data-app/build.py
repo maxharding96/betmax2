@@ -11,17 +11,20 @@ async def main():
     scraper_client = await Scraper.start()
     fbref_client = FBRef(scraper=scraper_client)
 
-    league = League.PREMIER_LEAGUE
+    league = League.CHAMPIONSHIP
     season = Season.S_25
-    # process_count = 50
 
     with get_session() as session:
         match_count = count_season_matches(session, season)
 
+    # process_count = 100
+    # end_index = match_count + process_count
+    end_index = -1
+
     print(f"Found {match_count} stored for the {season} season.")
 
     async for match in fbref_client.get_played_matches(
-        league, season, start_index=match_count
+        league, season, start_index=match_count, end_index=end_index
     ):
         with get_session() as session:
             create_fbref_match(session, match)

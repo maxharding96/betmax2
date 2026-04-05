@@ -14,8 +14,6 @@ export const Season = {
 export const Field = {
   SH: 0,
   SOT: 1,
-  FLS: 2,
-  FLD: 3,
 } as const
 
 export const matchSchema = z.object({
@@ -41,7 +39,8 @@ export type GetMatchesOutput = z.infer<typeof getMatchesOutputSchema>
 export type Match = z.infer<typeof matchSchema>
 
 export const getRowsInputSchema = z.object({
-  match: matchSchema,
+  league: z.enum(League),
+  home_teams: z.array(z.string()),
   field: z.enum(Field),
   over: z.float32(),
 })
