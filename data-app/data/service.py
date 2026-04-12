@@ -228,7 +228,7 @@ class DataService:
 
         return rows
 
-    def get_dispersion_by_league(session: Session, league: League, field: Field):
+    def _get_dispersion_by_league(self, session: Session, league: League, field: Field):
         col = FIELD_COLUMN_MAP[field]
         avg_val = func.avg(col)
         var_val = func.variance(col)
@@ -249,7 +249,7 @@ class DataService:
         return session.execute(stmt).first()
 
     def _create_player_match_report(
-        session: Session, fbref_report: MatchReport, match_id: int, team_id: int
+        self, session: Session, fbref_report: MatchReport, match_id: int, team_id: int
     ) -> PlayerMatchReport:
         player = get_or_create_player(session, player_name=fbref_report.player)
 
@@ -265,7 +265,7 @@ class DataService:
             fld=fbref_report.fld,
         )
 
-    def _create_fbref_match(self, session: Session, fbref_match: MatchWithReports):
+    def create_fbref_match(self, session: Session, fbref_match: MatchWithReports):
         home_team = get_or_create_team(session, team_name=fbref_match.home_team)
         away_team = get_or_create_team(session, team_name=fbref_match.away_team)
 

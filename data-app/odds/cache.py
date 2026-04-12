@@ -43,5 +43,5 @@ class OddsCache:
     def set_match_odds(self, match_odds: MatchOdds) -> None:
         raw = match_odds.model_dump_json()
 
-        ttl = 60 * 60  # 1 hour
+        ttl = 60 * 20  # 20 mins
         self._redis.set(self._match_odds_key(match_odds.match), raw, ttl)

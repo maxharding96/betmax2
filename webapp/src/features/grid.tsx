@@ -6,24 +6,33 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useMemo } from 'react'
 import { Spinner } from '@/components/ui/spinner'
 import { useGetRows } from '@/hooks'
-import { expectedValue, kellyCriterion, toPercent } from '@/utils/stats'
+import {
+  expectedValue,
+  kellyCriterion,
+  scoreBets,
+  toPercent,
+  fractionalOddsToDecimal,
+  percentageToDecimalOdds,
+} from '@/utils/stats'
 
 export const Grid = () => {
   const { data, isLoading, error } = useGetRows()
 
-  const rows = (data?.rows ?? [])
-    .filter((row) => {
-      const ev = expectedValue(row.odds, row.prediction)
-      const kc = kellyCriterion(row.odds, row.prediction)
-      return ev > 0 && kc > 0
-    })
-    .sort(
-      (a, b) =>
-        expectedValue(b.odds, b.prediction) -
-        expectedValue(a.odds, a.prediction),
-    )
+  const rows = useMemo(() => {
+    const rows = data?.rows ?? []
+    const filteredRows = rows
+      .map((row) => ({
+        ...row,
+        ev: expectedValue(row.odds, row.prediction),
+        kelly: kellyCriterion(row.odds, row.prediction),
+      }))
+      .filter((row) => row.ev > 0 && row.kelly > 0)
+
+    return scoreBets(filteredRows)
+  }, [data])
 
   return (
     <div className="h-200 overflow-auto">
@@ -37,7 +46,7 @@ export const Grid = () => {
             <TableHead>Best Odds</TableHead>
             <TableHead>Prediction</TableHead>
             <TableHead>EV (%)</TableHead>
-            <TableHead>Kelly Criterion (%)</TableHead>
+            <TableHead className="text-right">Kelly Criterion (%)</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -47,13 +56,11 @@ export const Grid = () => {
               <TableCell>{row.team}</TableCell>
               <TableCell>{row.opponent}</TableCell>
               <TableCell>{row.venue}</TableCell>
-              <TableCell>{row.odds}</TableCell>
-              <TableCell>{toPercent(row.prediction)}</TableCell>
-              <TableCell>
-                {toPercent(expectedValue(row.odds, row.prediction))}
-              </TableCell>
+              <TableCell>{fractionalOddsToDecimal(row.odds)}</TableCell>
+              <TableCell>{percentageToDecimalOdds(row.prediction)}</TableCell>
+              <TableCell>{toPercent(row.ev)}</TableCell>
               <TableCell className="text-right">
-                {toPercent(kellyCriterion(row.odds, row.prediction))}
+                {toPercent(row.kelly)}
               </TableCell>
             </TableRow>
           ))}

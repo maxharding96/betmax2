@@ -35,8 +35,12 @@ def get_or_create_match(
     return match
 
 
-def count_season_matches(session: Session, season: Season) -> int:
-    stmt = select(func.count()).select_from(Match).where(Match.season == season)
+def count_season_matches(session: Session, season: Season, league=League) -> int:
+    stmt = (
+        select(func.count())
+        .select_from(Match)
+        .where(Match.season == season, Match.league == league)
+    )
     count = session.execute(stmt).scalar()
 
     return count or 0

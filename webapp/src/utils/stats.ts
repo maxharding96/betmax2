@@ -55,3 +55,43 @@ export function kellyCriterion(
 export function toPercent(value: number): string {
   return `${(value * 100).toFixed(1)}%`
 }
+
+export function percentageToDecimalOdds(percentage: number): string {
+  if (percentage <= 0 || percentage >= 1) {
+    throw new Error('Percentage must be between 0 and 1 (exclusive)')
+  }
+
+  return (1 / percentage).toFixed(1)
+}
+
+export function fractionalOddsToDecimal(odds: string): number {
+  const [numerator, denominator] = odds.split('/').map(Number)
+
+  if (isNaN(numerator) || isNaN(denominator) || denominator === 0) {
+    throw new Error("Invalid odds format. Expected 'numerator/denominator'")
+  }
+
+  return numerator / denominator + 1
+}
+
+interface Bet {
+  ev: number
+  kelly: number
+}
+
+export function scoreBets<T extends Bet>(bets: T[]): T[] {
+  // Normalise both to 0-1 range across the set
+  const evMin = Math.min(...bets.map((r) => r.ev))
+  const evMax = Math.max(...bets.map((r) => r.ev))
+  const kellyMin = Math.min(...bets.map((r) => r.kelly))
+  const kellyMax = Math.max(...bets.map((r) => r.kelly))
+
+  return bets
+    .map((bet) => ({
+      ...bet,
+      score:
+        0.5 * ((bet.ev - evMin) / (evMax - evMin)) +
+        0.5 * ((bet.kelly - kellyMin) / (kellyMax - kellyMin)),
+    }))
+    .sort((a, b) => b.score - a.score)
+}
